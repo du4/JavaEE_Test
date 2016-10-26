@@ -1,15 +1,15 @@
+<%@ include file="include/begin-html.jsp" %>
 <form class="form-horizontal">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Add fiigth</legend>
+        <legend>Add Flight</legend>
 
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="textinputCode">Fligth Code</label>
             <div class="col-md-4">
                 <input id="textinputCode" name="textinputCode" type="text" placeholder="code" class="form-control input-md" required="">
-
             </div>
         </div>
 
@@ -18,7 +18,6 @@
             <label class="col-md-4 control-label" for="textinputCompany">Company</label>
             <div class="col-md-4">
                 <input id="textinputCompany" name="textinputCompany" type="text" placeholder="company" class="form-control input-md" required="">
-
             </div>
         </div>
 
@@ -27,7 +26,6 @@
             <label class="col-md-4 control-label" for="textinputArrivalTime">Arrival Time</label>
             <div class="col-md-4">
                 <input id="textinputArrivalTime" name="textinputArrivalTime" type="text" placeholder="arrival time" class="form-control input-md" required="">
-
             </div>
         </div>
 
@@ -36,7 +34,6 @@
             <label class="col-md-4 control-label" for="textinputDepartureTime">Departure Time</label>
             <div class="col-md-4">
                 <input id="textinputDepartureTime" name="textinputDepartureTime" type="text" placeholder="departure time" class="form-control input-md" required="">
-
             </div>
         </div>
 
@@ -66,7 +63,10 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebuttonStuffing">Stuffing Crew</label>
             <div class="col-md-4">
-                <button id="singlebuttonStuffing" name="singlebuttonStuffing" class="btn btn-default">Stuffing</button>
+                <a href=airport?command=STUFFINGCREW>
+                    <button id="singlebuttonStuffing" name="singlebuttonStuffing" class="btn btn-default">Stuffing</button>
+                </a>
+
             </div>
         </div>
 
@@ -81,3 +81,7 @@
 
     </fieldset>
 </form>
+
+<p>Cmd Login: ${message}</p>
+
+<%@ include file="include/end-html.jsp" %>

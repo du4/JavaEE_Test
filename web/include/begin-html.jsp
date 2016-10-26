@@ -12,9 +12,7 @@
     <tbody>
     <tr>
         <td>
-            <a href=index.jsp>login
-                <img src="include/logo.png">
-            </a>
+            <a href=index.jsp> <img src="include/logo.png"> </a>
 
         </td>
         <td><h1 align="center"> Airport </h1></td>
