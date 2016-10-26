@@ -1,5 +1,4 @@
 
-
 <p>Main: ${message}</p>
 
 <table width="100%" border="1" cellpadding="1" cellspacing="1">
@@ -35,10 +34,12 @@
             </div>
         </td>
         <td>
-            <a href=airport?command=StuffingCrew>StuffingCrew</a>
+            <a href=airport?command=STUFFINGCREW>Stuffing The Crew</a>
         </td>
     </tr>
     </tbody>
 </table>
+
+<a href=airport?command=ADDFLIGHT>Add Flight</a>
 
 

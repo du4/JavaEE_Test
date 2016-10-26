@@ -26,10 +26,18 @@ enum Action {
         }
 
     },
-    ADD_FLIGHT{
+    STUFFINGCREW {
+        {
+            this.command = new CommandStuffingCrew();
+            this.inPage="/index.jsp";
+            this.okPage ="/stuffingCrew.jsp";
+        }
+
+    },
+    ADDFLIGHT {
         {
             this.command = new CommandAddFlight();
-            this.inPage="/logout.jsp";
+            this.inPage="/index.jsp";
             this.okPage ="/addFlight.jsp";
         }
     }
