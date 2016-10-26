@@ -1,8 +1,5 @@
 <%@ include file="include/begin-html.jsp" %>
 
-<p>INDEX: ${message}</p>
-
-<%@ include file="main.jsp" %>
-
+<p>Cmd Logout: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
