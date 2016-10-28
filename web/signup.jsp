@@ -1,6 +1,7 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="airport?command=SIGNUP" method="post">
     <fieldset>
 
         <!-- Form Name -->
@@ -8,58 +9,57 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textinputEmail">Login</label>
+            <label class="col-md-4 control-label" for="login">Login</label>
             <div class="col-md-4">
-                <input id="textinputLogin" name="textinputLogin" type="text" placeholder="login" class="form-control input-md" required="">
-
+                <input id="login" name="login" role="Login" type="text" placeholder="login" class="form-control input-md" required="Login can't be empty.">
+                <span class="help-block">Type your login.</span>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textinputEmail">Email</label>
+            <label class="col-md-4 control-label" for="email">Email</label>
             <div class="col-md-4">
-                <input id="textinputEmail" name="textinputEmail" type="text" placeholder="email" class="form-control input-md" required="">
-
+                <input id="email" name="email" role="Email" type="text" placeholder="email" class="form-control input-md" required="Email can't be empty.">
+                <span class="help-block">Type your email.</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput">Password</label>
+            <label class="col-md-4 control-label" for="pass">Password</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
-
+                <input id="pass" name="pass" role="Password" type="password" placeholder="password" class="form-control input-md" required="Password can't be empty.">
+                <span class="help-block">Type your password.</span>
             </div>
         </div>
 
-        <!-- Password input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinputConfirm">Confirm Password</label>
-            <div class="col-md-4">
-                <input id="passwordinputConfirm" name="passwordinputConfirm" type="password" placeholder="password confirm" class="form-control input-md" required="">
+        <%--<!-- Password input-->--%>
+        <%--<div class="form-group">--%>
+            <%--<label class="col-md-4 control-label" for="passwordinputConfirm">Confirm Password</label>--%>
+            <%--<div class="col-md-4">--%>
+                <%--<input id="passwordinputConfirm" role="passwordinputConfirm" type="password" placeholder="password confirm" class="form-control input-md" required="">--%>
 
-            </div>
-        </div>
+            <%--</div>--%>
+        <%--</div>--%>
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasicRole">Select role</label>
+            <label class="col-md-4 control-label" for="role">Select role</label>
             <div class="col-md-4">
-                <select id="selectbasicRole" name="selectbasicRole" class="form-control">
-                    <option value="1">Administrator</option>
-                    <option value="2">Dispatcher</option>
+                <select id="role" name="role" role="Role" class="form-control">
+                    <%--<option value="1">Administrator</option>--%>
                     <option value="3">User</option>
+                    <option value="2">Dispatcher</option>
                 </select>
             </div>
         </div>
 
-        <!-- Button (Double) -->
+        <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="button1id"></label>
-            <div class="col-md-8">
-                <button id="button1id" name="button1id" class="btn btn-success">Ok</button>
-                <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+                <button id="singlebutton" role="singlebutton" class="btn btn-success">Create User</button>
             </div>
         </div>
 
@@ -67,7 +67,7 @@
 </form>
 
 
-<p>Cmd SIGN-UP: ${message}</p>
+<%--<p>Cmd SIGN-UP: ${message}</p>--%>
 
 <%@ include file="include/end-html.jsp" %>
 

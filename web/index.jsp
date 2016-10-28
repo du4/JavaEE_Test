@@ -1,6 +1,7 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<p>INDEX: ${message}</p>
+<%--<p>INDEX: ${message}</p>--%>
 
 <%@ include file="main.jsp" %>
 

@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 
 <p>Main: ${message}</p>
 
@@ -13,33 +14,13 @@
         <th scope="col">Crew</th>
     </tr>
     <tr>
-        <td>QS690</td>
-        <td>Austrian Airlines</td>
-        <td>20.08.2016 05:00</td>
-        <td>20.08.2016 06:00</td>
-        <td>
-            <div class="col-md-4">
-                <select id="selectbasicFrom" name="selectbasicFrom" class="form-control">
-                    <option value="1">MSQ</option>
-                    <option value="2">VIE</option>
-                </select>
-            </div>
-        </td>
-        <td>
-            <div class="col-md-4">
-                <select id="selectbasicTo" name="selectbasicTo" class="form-control">
-                    <option value="1">MSQ</option>
-                    <option value="2">VIE</option>
-                </select>
-            </div>
-        </td>
-        <td>
-            <a href=airport?command=STUFFINGCREW>Stuffing The Crew</a>
-        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
     </tbody>
 </table>
-
-<a href=airport?command=ADDFLIGHT>Add Flight</a>
-
-

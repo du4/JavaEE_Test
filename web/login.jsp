@@ -1,35 +1,35 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="airport?command=LOGIN" method="POST">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Login</legend>
+        <legend>Авторизация пользователя</legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Login</label>
+            <label class="col-md-4 control-label" for="login">Логин</label>
             <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="login" class="form-control input-md" required="">
-
+                <input id="login" name="login" role="Login" type="text" value="" placeholder="" class="form-control input-md" required="">
+                <span class="help-block">Type your login</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput">Password</label>
+            <label class="col-md-4 control-label" for="pass">Пароль</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
-
+                <input id="pass" name="pass" role="Password" type="password" value="" placeholder="" class="form-control input-md" required="">
+                <span class="help-block">Password</span>
             </div>
         </div>
 
-        <!-- Button (Double) -->
+        <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="button1id"></label>
-            <div class="col-md-8">
-                <button id="button1id" name="button1id" class="btn btn-success">Ok</button>
-                <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+                <button id="singlebutton" role="singlebutton" class="btn btn-success">Login</button>
             </div>
         </div>
 
@@ -37,6 +37,6 @@
 </form>
 
 
-<p>Cmd Login: ${message}</p>
+<%--<p>Cmd Login: ${message}</p>--%>
 
 <%@ include file="include/end-html.jsp" %>
