@@ -1,3 +1,4 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
 <form class="form-horizontal">
@@ -10,7 +11,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Login</label>
             <div class="col-md-4">
-                <input id="textinput" name="textinput" type="text" placeholder="login" class="form-control input-md" required="">
+                <input id="textinput" role="textinput" type="text" placeholder="login" class="form-control input-md" required="">
 
             </div>
         </div>
@@ -19,7 +20,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="passwordinput">Password</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
+                <input id="passwordinput" role="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
 
             </div>
         </div>
@@ -28,8 +29,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-                <button id="button1id" name="button1id" class="btn btn-success">Ok</button>
-                <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+                <button id="button1id" role="button1id" class="btn btn-success">Ok</button>
+                <button id="button2id" role="button2id" class="btn btn-danger">Cancel</button>
             </div>
         </div>
 
@@ -37,6 +38,6 @@
 </form>
 
 
-<p>Cmd Login: ${message}</p>
+<%--<p>Cmd Login: ${message}</p>--%>
 
 <%@ include file="include/end-html.jsp" %>
