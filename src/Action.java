@@ -35,6 +35,13 @@ enum Action {
             }
 
         },
+//    LISTUSER {
+//        {
+//            this.command = new CommandListUser();
+//            this.inPage="/index.jsp";
+//            this.okPage ="/stuffingCrew.jsp";
+//        }
+//    },
      ADDFLIGHT {
             {
                 this.command = new CommandAddFlight();
