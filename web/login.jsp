@@ -5,23 +5,23 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Авторизация пользователя</legend>
+        <legend>Login Form</legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="login">Логин</label>
+            <label class="col-md-4 control-label" for="login">Login</label>
             <div class="col-md-4">
-                <input id="login" name="login" role="Login" type="text" value="" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Type your login</span>
+                <input id="login" name="login" role="Login" type="text" value="" placeholder="login" class="form-control input-md" required="">
+                <%--<span class="help-block">Type your login</span>--%>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="pass">Пароль</label>
+            <label class="col-md-4 control-label" for="pass">Password</label>
             <div class="col-md-4">
-                <input id="pass" name="pass" role="Password" type="password" value="" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Password</span>
+                <input id="pass" name="pass" role="Password" type="password" value="" placeholder="password" class="form-control input-md" required="">
+                <%--<span class="help-block">Password</span>--%>
             </div>
         </div>
 

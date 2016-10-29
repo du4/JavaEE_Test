@@ -33,6 +33,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="airport?command=ListUsers">List Users</a></li>
                     <li><a href="airport?command=ADDFLIGHT">Add flight</a></li>
                     <li><a href="airport?command=STUFFINGCREW">Stuffing Crew</a></li>
                 </ul>

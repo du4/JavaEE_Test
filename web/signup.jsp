@@ -12,7 +12,7 @@
             <label class="col-md-4 control-label" for="login">Login</label>
             <div class="col-md-4">
                 <input id="login" name="login" role="Login" type="text" placeholder="login" class="form-control input-md" required="Login can't be empty.">
-                <span class="help-block">Type your login.</span>
+                <%--<span class="help-block">Type your login.</span>--%>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <label class="col-md-4 control-label" for="email">Email</label>
             <div class="col-md-4">
                 <input id="email" name="email" role="Email" type="text" placeholder="email" class="form-control input-md" required="Email can't be empty.">
-                <span class="help-block">Type your email.</span>
+                <%--<span class="help-block">Type your email.</span>--%>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
             <label class="col-md-4 control-label" for="pass">Password</label>
             <div class="col-md-4">
                 <input id="pass" name="pass" role="Password" type="password" placeholder="password" class="form-control input-md" required="Password can't be empty.">
-                <span class="help-block">Type your password.</span>
+                <%--<span class="help-block">Type your password.</span>--%>
             </div>
         </div>
 

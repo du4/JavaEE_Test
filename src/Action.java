@@ -1,5 +1,4 @@
 
-
 enum Action {
     SIGNUP {
         {
@@ -12,7 +11,7 @@ enum Action {
         {
             this.command = new CommandLogin();
             this.inPage="/login.jsp";
-            this.okPage ="/main.jsp";
+            this.okPage ="/login.jsp";
         }
     },
     LOGOUT {
@@ -27,6 +26,14 @@ enum Action {
             this.command = new CommandLogout();
         }
     },
+    LISTUSERS {
+        {
+            this.command = new CommandListUsers();
+            this.inPage="/error.jsp";
+            this.okPage ="/listOfUsers.jsp";
+        }
+
+    },
      STUFFINGCREW {
             {
                 this.command = new CommandStuffingCrew();
@@ -35,13 +42,6 @@ enum Action {
             }
 
         },
-//    LISTUSER {
-//        {
-//            this.command = new CommandListUser();
-//            this.inPage="/index.jsp";
-//            this.okPage ="/stuffingCrew.jsp";
-//        }
-//    },
      ADDFLIGHT {
             {
                 this.command = new CommandAddFlight();
