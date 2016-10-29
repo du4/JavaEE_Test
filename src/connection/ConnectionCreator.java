@@ -16,7 +16,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ConnectionCreator {
 
     private static volatile Connection connection = null;
-    private final static File file = new File(System.getProperty("user.dir")+"/CSettings.json");
+    private static String catalinaHome = System.getenv("CATALINA_HOME");
+    private final static File file = new File(catalinaHome +"/bin/CSettings.json");
 
     private static ConnectionSettingsPOJO connectionSettings;
     private static final Lock lock = new ReentrantLock();
