@@ -1,32 +1,50 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Airport Project</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+    <title>Airport Project</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 
 
-<body>
-<table width="100%" border="0">
-    <tbody>
-    <tr>
-        <td>
-            <a href=index.jsp>login
-                <img src="include/logo.png">
-            </a>
 
-        </td>
-        <td><h1 align="center"> Airport </h1></td>
-        <td><table width="150" align="right" cellpadding="1" cellspacing="1">
-            <tbody>
-            <tr>
-                <td><a href=airport?command=Login>login</a></td>
-                <td><a href=airport?command=SignUp>sign-up</a></td>
-                <td><a href=airport?command=Logout>logout</a></td>
-            </tr>
-            </tbody>
-        </table></td>
-    </tr>
-    </tbody>
-</table>
+
+
+<div class="container">
+    <img width="100%" src="include/logo.jpg">
+    <!-- Static navbar, смотрите пример тут: http://bootstrap-3.ru/examples/navbar/ -->
+
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/shkantau">Airport</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="airport?command=ADDFLIGHT">Add flight</a></li>
+                    <li><a href="airport?command=STUFFINGCREW">Stuffing Crew</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="airport?command=SignUp">Sign Up</a></li>
+                    <li><a href="airport?command=Login">Login</a></li>
+                    <li><a href="airport?command=Logout">Logout</a></li>
+                    <li><a href="/manager/html/list">Tomcat</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </div>
+
+
+<body>

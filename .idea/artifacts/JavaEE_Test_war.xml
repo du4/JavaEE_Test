@@ -3,6 +3,13 @@
     <output-path>$PROJECT_DIR$/out/artifacts/JavaEE_Test_war</output-path>
     <root id="archive" name="JavaEE_Test_war.war">
       <element id="artifact" artifact-name="JavaEE_Test:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="gson-2.7" />
+          <element id="library" level="project" name="mysql-connector-java" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

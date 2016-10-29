@@ -1,3 +1,5 @@
+
+
 enum Action {
     SIGNUP {
         {
@@ -16,7 +18,7 @@ enum Action {
     LOGOUT {
         {
             this.command = new CommandLogout();
-            this.inPage="/index.jsp";
+            this.inPage="/logout.jsp";
             this.okPage ="/login.jsp";
         }
     },
@@ -24,16 +26,29 @@ enum Action {
         {
             this.command = new CommandLogout();
         }
-
     },
-    ADD_FLIGHT{
-        {
-            this.command = new CommandAddFlight();
-            this.inPage="/logout.jsp";
-            this.okPage ="/addFlight.jsp";
-        }
-    }
-    ;
+     STUFFINGCREW {
+            {
+                this.command = new CommandStuffingCrew();
+                this.inPage="/index.jsp";
+                this.okPage ="/stuffingCrew.jsp";
+            }
+
+        },
+//    LISTUSER {
+//        {
+//            this.command = new CommandListUser();
+//            this.inPage="/index.jsp";
+//            this.okPage ="/stuffingCrew.jsp";
+//        }
+//    },
+     ADDFLIGHT {
+            {
+                this.command = new CommandAddFlight();
+                this.inPage="/index.jsp";
+                this.okPage ="/addFlight.jsp";
+            }
+    };
     public String inPage="/error.jsp";
     public String okPage ="/error.jsp";
     public ActionCommand command;
