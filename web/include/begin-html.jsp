@@ -7,6 +7,11 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Airport Project</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="shortcut icon" href="favicon.ico"/>
@@ -34,8 +39,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="airport?command=ListUsers">List Users</a></li>
-                    <li><a href="airport?command=ADDFLIGHT">Add flight</a></li>
-                    <li><a href="airport?command=STUFFINGCREW">Stuffing Crew</a></li>
+                    <li><a href="airport?command=NewFlight">New flight</a></li>
+                    <li><a href="airport?command=StuffingCrew">Add Flight Crew</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="airport?command=SignUp">Sign Up</a></li>

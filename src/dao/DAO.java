@@ -1,19 +1,22 @@
 package dao;
 
+import beans.Crew;
+
 public class DAO {
 
     private static DAO dao; //синглтон для DAO
 
     public FlightDAO flightDAO;                //DAO for flights
-    public AirhostessDAO airhostessDAO;     //DAO for flights
-    public AirportsDAO airportsDAO;         //DAO for flights
-    public PilotDAO pilotDAO;                //DAO for flights
-    public PlaneDAO planeDAO;                 //DAO for flights
-    public UserDAO userDAO;                    //DAO для пользователей
-    public RoleDAO roleDAO;                    //DAO для ролей
+    public AirhostessDAO airhostessDAO;     //DAO for airhostess
+    public AirportsDAO airportsDAO;         //DAO for aiports
+    public PilotDAO pilotDAO;                //DAO for pilots
+    public PlaneDAO planeDAO;                 //DAO for planes
+    public UserDAO userDAO;                    //DAO for users
+    public RoleDAO roleDAO;                    //DAO for roles
+    public CrewDAO crewDAO;                 //DAO for crews
     //...
 
-    public static DAO getDAO() {   //метод, который создает DAO или возвращает существующий экземпляр
+    public static DAO getDAO() {   //singletone method
         if (dao == null) {
             synchronized (DAO.class) {
                 if (dao == null) {
@@ -25,7 +28,7 @@ public class DAO {
                     dao.userDAO = new UserDAO();
                     dao.roleDAO = new RoleDAO();
                     dao.flightDAO = new FlightDAO();
-
+                    dao.crewDAO = new CrewDAO();
                 }
             }
         }

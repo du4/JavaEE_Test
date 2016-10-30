@@ -9,6 +9,7 @@
         <th scope="col">Company</th>
         <th scope="col">Departure Time</th>
         <th scope="col">Arrival Time</th>
+        <th scope="col">Plane</th>
         <th scope="col">From</th>
         <th scope="col">To</th>
         <th scope="col">Crew</th>

@@ -19,10 +19,26 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.56" level="application_server_libraries" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
     <orderEntry type="library" name="gson-2.7" level="project" />
     <orderEntry type="library" name="mysql-connector-java" level="project" />
+    <orderEntry type="module-library" scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="file://D:/xampp/tomcat" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://D:/xampp/tomcat/webapps/docs/appdev/sample/src" />
+          <root url="file://D:/xampp/tomcat/webapps/examples/WEB-INF/classes" />
+          <root url="file://D:/xampp/tomcat/webapps/examples/WEB-INF/jsp/applet" />
+          <root url="file://D:/xampp/tomcat/webapps/examples/jsp/plugin/applet" />
+          <root url="file://D:/xampp/tomcat/work/Catalina/localhost/_" />
+          <root url="file://D:/xampp/tomcat/work/Catalina/localhost/manager" />
+          <root url="file://D:/xampp/tomcat/work/Catalina/localhost/shkantau" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

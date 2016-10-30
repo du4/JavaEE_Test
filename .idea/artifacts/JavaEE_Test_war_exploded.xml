@@ -5,10 +5,13 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="JavaEE_Test" />
+          <element id="dir-copy" path="D:/xampp/tomcat" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="gson-2.7" />
+          <element id="library" level="project" name="mysql-connector-java" />
+          <element id="library" level="project" name="tomcat-juli" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="JavaEE_Test/web/Web" />

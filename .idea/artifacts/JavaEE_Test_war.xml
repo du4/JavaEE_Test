@@ -8,6 +8,7 @@
           <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="gson-2.7" />
           <element id="library" level="project" name="mysql-connector-java" />
+          <element id="library" level="project" name="tomcat-juli" />
         </element>
       </element>
     </root>
