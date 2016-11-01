@@ -1,7 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 
-<p>Main: ${message}</p>
-
 <table width="100%" border="1" cellpadding="1" cellspacing="1">
     <tbody>
     <tr>

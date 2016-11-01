@@ -34,20 +34,12 @@
             </div>
         </div>
 
-        <%--<!-- Password input-->--%>
-        <%--<div class="form-group">--%>
-            <%--<label class="col-md-4 control-label" for="passwordinputConfirm">Confirm Password</label>--%>
-            <%--<div class="col-md-4">--%>
-                <%--<input id="passwordinputConfirm" role="passwordinputConfirm" type="password" placeholder="password confirm" class="form-control input-md" required="">--%>
-
-            <%--</div>--%>
-        <%--</div>--%>
 
         <!-- Select Basic -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="role">Select role</label>
             <div class="col-md-4">
-                <select id="role" name="role" role="Role" class="form-control">
+                <select id="role" name="role"  class="form-control">
                     <%--<option value="1">Administrator</option>--%>
                     <option value="3">User</option>
                     <option value="2">Dispatcher</option>
@@ -59,7 +51,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
-                <button id="singlebutton" role="singlebutton" class="btn btn-success">Create User</button>
+                <button id="singlebutton" class="btn btn-success">Create User</button>
             </div>
         </div>
 

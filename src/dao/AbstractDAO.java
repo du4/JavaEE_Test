@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 public abstract class AbstractDAO{
     public String lastSQL="";
+
     protected int executeUpdate(String sql) {
         int result = -1;
         lastSQL="executeUpdate:"+sql;

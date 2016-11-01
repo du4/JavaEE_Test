@@ -7,8 +7,8 @@ import java.io.IOException;
 
 //@WebServlet("/airport")
 public class FrontController extends HttpServlet {
-
-    public String csPath;
+    public static final String CSPATH = "csPath";
+    private String csPath;
 
     @Override
     public void init() throws ServletException {
@@ -17,7 +17,7 @@ public class FrontController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("csPath", csPath);
+        request.setAttribute(CSPATH, csPath);
         Action action = Actions.defineFrom(request);
         Action nextAction = action.execute(request);
 
@@ -32,6 +32,7 @@ public class FrontController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute(CSPATH, csPath);
         Action action = Actions.defineFrom(request);
         action.execute(request);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(action.getJsp());

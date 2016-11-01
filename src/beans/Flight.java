@@ -1,13 +1,13 @@
 package beans;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Flight {
     private int id = 0;
     private String flightCode;
     private String company;
-    private Date departure_time;
-    private Date arrival_time;
+    private Timestamp departure_time;
+    private Timestamp arrival_time;
     private int plane=0;
     private int to=0;
     private int from=0;
@@ -17,7 +17,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(int id, String flightCode, String company, Date departure_time, Date arrival_time, int plane, int to, int from, int crew, int user) {
+    public Flight(int id, String flightCode, String company, Timestamp departure_time, Timestamp arrival_time, int plane, int to, int from, int crew, int user) {
         this.id = id;
         this.flightCode = flightCode;
         this.company = company;
@@ -54,19 +54,19 @@ public class Flight {
         this.company = company;
     }
 
-    public Date getDeparture_time() {
+    public Timestamp getDeparture_time() {
         return departure_time;
     }
 
-    public void setDeparture_time(Date departure_time) {
+    public void setDeparture_time(Timestamp departure_time) {
         this.departure_time = departure_time;
     }
 
-    public Date getArrival_time() {
+    public Timestamp getArrival_time() {
         return arrival_time;
     }
 
-    public void setArrival_time(Date arrival_time) {
+    public void setArrival_time(Timestamp arrival_time) {
         this.arrival_time = arrival_time;
     }
 

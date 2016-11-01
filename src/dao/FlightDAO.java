@@ -22,9 +22,9 @@ public class FlightDAO extends AbstractDAO implements IDAO<Flight> {
 
     @Override
     public int create(Flight entity) {
-        String sql = String.format("INSERT INTO flights(flightCode, company, departure_time, arrival_time,plane,to,from,crew,user) " +
-                        "VALUES('%s','%s','%s','%s','%d','%d','%d','%d','%d');",
-                entity.getFlightCode(), entity.getCompany(), entity.getDeparture_time(), entity.getArrival_time(),
+        String sql = String.format("INSERT INTO flights(flightCode, company, departure_time, arrival_time,plane,toPort,fromPort,crew,user) " +
+                        "VALUES('%s','%s','%s','%s',%d,%d,%d,%d,%d);",
+                entity.getFlightCode(), entity.getCompany(), entity.getDeparture_time().toString(), entity.getArrival_time().toString(),
                 entity.getPlane(),entity.getTo(),entity.getFrom(), entity.getCrew(),entity.getUser());
 //        entity.setId(executeUpdate(sql));
         return executeUpdate(sql);
@@ -33,9 +33,9 @@ public class FlightDAO extends AbstractDAO implements IDAO<Flight> {
     @Override
     public boolean update(Flight entity) {
         String sql = String.format("UPDATE `flights` SET `flightCode`='%s', `company`='%s', `departure_time`='%s', `arrival_time`='%s' " +
-                        ",`plane`='%s',`to`='%s',`from`='%s',`crew`='%s',,`user`='%s'" +
+                        ",`plane`=%d,`toPort`=%d,`fromPort`=%d,`crew`=%d,`user`=%d" +
                         "WHERE `flights`.`flight_id` = %d;",
-                entity.getFlightCode(), entity.getCompany(), entity.getDeparture_time(), entity.getArrival_time(),
+                entity.getFlightCode(), entity.getCompany(), entity.getDeparture_time().toString(), entity.getArrival_time().toString(),
                 entity.getPlane(),entity.getTo(),entity.getFrom(), entity.getCrew(),entity.getUser(), entity.getId());
         return (0<executeUpdate(sql));
     }
@@ -56,8 +56,8 @@ public class FlightDAO extends AbstractDAO implements IDAO<Flight> {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()){
                 flights.add(new Flight(resultSet.getInt("flight_id"),resultSet.getString("flightCode"),
-                        resultSet.getString("company"),resultSet.getDate("departure_time"),resultSet.getDate("arrival_time"),
-                        resultSet.getInt("plane"),resultSet.getInt("to"),resultSet.getInt("from"),resultSet.getInt("crew"),
+                        resultSet.getString("company"),resultSet.getTimestamp("departure_time"),resultSet.getTimestamp("arrival_time"),
+                        resultSet.getInt("plane"),resultSet.getInt("toPort"),resultSet.getInt("fromPort"),resultSet.getInt("crew"),
                         resultSet.getInt("user")));
             }
 

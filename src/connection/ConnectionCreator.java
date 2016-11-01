@@ -18,6 +18,7 @@ public class ConnectionCreator {
     private static volatile Connection connection = null;
     private static String catalinaHome = System.getenv("CATALINA_HOME");
     private final static File file = new File(catalinaHome +"/bin/CSettings.json");
+    public static String path = "";
 
     private static ConnectionSettingsPOJO connectionSettings;
     private static final Lock lock = new ReentrantLock();
@@ -33,7 +34,11 @@ public class ConnectionCreator {
     }
 
     public static Connection getConnection() throws SQLException, FileNotFoundException {
-        connectionSettings = (new Gson()).fromJson(new FileReader(file), ConnectionSettingsPOJO.class);
+        if (path.equals("")) {
+            connectionSettings = (new Gson()).fromJson(new FileReader(file), ConnectionSettingsPOJO.class);
+        }else{
+            connectionSettings = (new Gson()).fromJson(new FileReader(path), ConnectionSettingsPOJO.class);
+        }
         if (connection == null || connection.isClosed()) {
             try{
                 lock.lock();

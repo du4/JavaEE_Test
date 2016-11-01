@@ -10,12 +10,25 @@
     <display-name>Servlet Controller</display-name>
 
     <servlet>
-        <servlet-name>FrontController</servlet-name>
+        <servlet-name>AirportDu4</servlet-name>
         <servlet-class>FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FrontController</servlet-name>
+        <servlet-name>AirportDu4</servlet-name>
         <url-pattern>/airport</url-pattern>
+        <!--<url-pattern>/</url-pattern>-->
     </servlet-mapping>
 
+    <filter>
+        <filter-name>FilterUTF8</filter-name>
+        <filter-class>FilterUTF8</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterUTF8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

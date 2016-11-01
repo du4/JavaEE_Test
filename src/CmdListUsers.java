@@ -1,25 +1,42 @@
 
 
+import beans.Role;
 import beans.User;
 import dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 class CmdListUsers extends Action {
     @Override
     public Action execute(HttpServletRequest request) {
 
-        DAO dao = DAO.getDAO();
+        // here must placed authorization
+
+        HttpSession session = request.getSession();
+        Object o = session.getAttribute("roles");
+        if (o != null) {
+            if (o instanceof List) {
+                List<Role> roles = (List<Role>) o;
+            } else {
+                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+                List<Role> roles=dao.roleDAO.getAll("");
+                session.setAttribute("roles", roles);
+            }
+        }
+
+
+        DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
         List<User> users=dao.userDAO.getAll("");
 
             if (users==null) {
-                request.setAttribute( Messages.msgError,"Wrong data." + dao.userDAO.lastSQL);
+                request.setAttribute( AttrMessages.msgError,"Wrong data." + dao.userDAO.lastSQL);
                 return  null;
             } else {
-                request.setAttribute(Messages.msgMessage,"Read usersCount=" + users.size());
+                request.setAttribute(AttrMessages.msgMessage,"Read usersCount=" + users.size());
                 request.setAttribute("users", users);
-                return Actions.FILLUSERS.action;
+                return null;
             }
     }
 }
