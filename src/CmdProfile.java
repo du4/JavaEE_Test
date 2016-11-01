@@ -1,0 +1,19 @@
+import beans.User;
+
+import javax.servlet.http.HttpServletRequest;
+
+class CmdProfile extends Action {
+    @Override
+    Action execute(HttpServletRequest request) {
+        Object o = request.getSession().getAttribute("user");
+        if (o != null){
+            if (o instanceof User){
+                request.setAttribute("user",o);
+            }
+        }else {
+            request.removeAttribute("user");
+        }
+        HttpSessionAttrUpdater.updateList  ( request, "roles");
+        return null;
+    }
+}

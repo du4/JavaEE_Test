@@ -12,11 +12,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleDAO extends AbstractDAO implements IDAO<Role> {
+class RoleDAO extends AbstractDAO implements IDAO<Role> {
     @Override
     public List<Role> getAll(String WHERE) {
         List<Role> roles = new ArrayList<>();
-        String sql = "SELECT * FROM role " + WHERE + " ;";
+        String sql = "SELECT * FROM roles " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
@@ -24,7 +24,7 @@ public class RoleDAO extends AbstractDAO implements IDAO<Role> {
             while (rs.next()) {
                 Role role = new Role();
                 role.setId(rs.getInt("role_id"));
-                role.setRole(rs.getString("role"));
+                role.setRole(rs.getString("name"));
                 roles.add(role);
             }
         } catch (SQLException | FileNotFoundException e) {
@@ -45,7 +45,7 @@ public class RoleDAO extends AbstractDAO implements IDAO<Role> {
     @Override
     public int create(Role role) {
         String sql = String.format(
-                "insert INTO role(Role) values('%s',);",role.getRole()
+                "insert INTO roles(name) values('%s',);",role.getRole()
         );
 //        role.setId(executeUpdate(sql));
         return executeUpdate(sql);
@@ -54,7 +54,7 @@ public class RoleDAO extends AbstractDAO implements IDAO<Role> {
     @Override
     public boolean update(Role role) {
         String sql = String.format(
-                "UPDATE `role` SET `Role` = '%s', WHERE `roles`.`role_id` = %d",
+                "UPDATE `roles` SET `name` = '%s', WHERE `roles`.`role_id` = %d",
                 role.getRole(), role.getId()
         );
         return (0 < executeUpdate(sql));
@@ -63,7 +63,7 @@ public class RoleDAO extends AbstractDAO implements IDAO<Role> {
     @Override
     public boolean delete(Role role) {
         String sql = String.format(
-                "DELETE FROM `role` WHERE `roles`.`role_id` = %d;", role.getId()
+                "DELETE FROM `roles` WHERE `roles`.`role_id` = %d;", role.getId()
         );
         return (0 < executeUpdate(sql));
     }

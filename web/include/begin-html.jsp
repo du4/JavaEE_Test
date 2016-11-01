@@ -48,7 +48,8 @@
                     <li><a href="airport?command=SignUp">Sign Up</a></li>
                     <li><a href="airport?command=Login">Login</a></li>
                     <li><a href="airport?command=Logout">Logout</a></li>
-                    <li><a href="/manager/html/list">Tomcat</a></li>
+                    <li><a href="airport?command=Profile">Profile</a></li>
+                    <%--<li><a href="/manager/html/list">Tomcat</a></li>--%>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

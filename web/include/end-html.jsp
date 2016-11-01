@@ -9,7 +9,7 @@
                 </font>
             </b>
         </p>
-        <p>User: ${curUser}</p>
+        <p align="right">${curUser}</p>
         <p>du4 © 2016 Shkantau Aliaksei</p>
     </div>
 </footer>

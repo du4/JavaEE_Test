@@ -1,13 +1,16 @@
+import beans.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 
 //@WebServlet("/airport")
 public class FrontController extends HttpServlet {
-    public static final String CSPATH = "csPath";
+    static final String CSPATH = "csPath";
     private String csPath;
 
     @Override
@@ -15,27 +18,40 @@ public class FrontController extends HttpServlet {
             csPath = getServletContext().getRealPath("/WEB-INF/CSettings.json");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setAttribute(CSPATH, csPath);
-        Action action = Actions.defineFrom(request);
-        Action nextAction = action.execute(request);
-
-//        if (nextAction == null){
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(action.getJsp());
-            requestDispatcher.forward(request,response);
-//        }else {
-//            response.sendRedirect("airport?command="+nextAction);
-//        }
-
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute(CSPATH, csPath);
+        writeSessionStr(request);
+
+        Action action = Actions.defineFrom(request);
+        Action nextAction = action.execute(request);
+
+        if (nextAction == null){
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(action.getJsp());
+            requestDispatcher.forward(request,response);
+        }else {
+            response.sendRedirect("airport?command="+nextAction);
+        }
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute(CSPATH, csPath);
+
+        writeSessionStr(request);
+
         Action action = Actions.defineFrom(request);
         action.execute(request);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(action.getJsp());
         requestDispatcher.forward(request,response);
+    }
+
+    private void writeSessionStr(HttpServletRequest request){
+        User userFromSession =  (User)request.getSession().getAttribute("user");
+        if (userFromSession != null) {
+            request.setAttribute("curUser","Session info: user.login="+userFromSession.getLogin()+", created at-" +new Timestamp(request.getSession().getLastAccessedTime()));
+            request.getSession().setAttribute("user",userFromSession); // update session
+        }
     }
 }

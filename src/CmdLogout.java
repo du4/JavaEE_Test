@@ -12,14 +12,16 @@ class CmdLogout extends Action {
 
         if (request.getMethod().equalsIgnoreCase("post")){
             session.invalidate();
+            return Actions.LOGIN.action;
         }
 
-        Object o = session.getAttribute("user");
-        if (o instanceof User){
-            request.setAttribute(AttrMessages.msgMessage, "OK login="+((User) o).getLogin());
-            return null;
-        }
-
-        return Actions.LOGIN.action;
+//        Object o = session.getAttribute("user");
+//
+//        if (o instanceof User){
+//            request.setAttribute(AttrMessages.msgMessage, "OK login="+((User) o).getLogin());
+//            return null;
+//        }
+//        return Actions.LOGIN.action;
+        return null;
     }
 }

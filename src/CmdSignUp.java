@@ -1,8 +1,10 @@
 
+import beans.Role;
 import beans.User;
 import dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 class CmdSignUp extends Action {
     @Override
@@ -33,6 +35,22 @@ class CmdSignUp extends Action {
             } else {
                 request.setAttribute(AttrMessages.msgError, "User does not created. Create new user again. " + dao.userDAO.lastSQL);
             }
+        }else {
+
+            HttpSessionAttrUpdater.updateList  (request, "roles");
+//            Object o = request.getSession().getAttribute("roles");
+//            if (o != null) {
+//                if (o instanceof List) {
+//                    List<Role> roleList = (List<Role>) o;
+//                    request.setAttribute("roles", roleList);
+//                    request.getSession().setAttribute("roles",roleList);
+//                }
+//            }else {
+//                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+//                List<Role> roles = dao.roleDAO.getAll("");
+//                request.setAttribute("roles",roles);
+//                request.getSession().setAttribute("roles",roles);
+//            }
         }
 
         return null;

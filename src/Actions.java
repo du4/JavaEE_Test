@@ -4,6 +4,8 @@ enum Actions {
     SIGNUP {{ this.action = new CmdSignUp();}},
     LOGIN { {this.action = new CmdLogin();}},
     LOGOUT {{this.action = new CmdLogout();}},
+    INDEX {{this.action = new CmdIndex();}},
+    PROFILE {{this.action = new CmdProfile();}},
     ERROR {{this.action = new CmdError();}},
     LISTUSERS {{this.action = new CmdListUsers();}},
     STUFFINGCREW {{this.action = new CmdStuffingCrew();}},
@@ -13,7 +15,7 @@ enum Actions {
     protected Action action = null;
 
     public static Action defineFrom(HttpServletRequest request){
-        Action result = null;
+        Action result ;
         String command = request.getParameter("command").toUpperCase();
         if (command != null) {
             try {
@@ -22,9 +24,8 @@ enum Actions {
                 result = Actions.ERROR.action;
             }
         }else {
-//            result = Actions.INDEX.action;
+            result = Actions.INDEX.action;
         }
-
         return result;
     }
 }

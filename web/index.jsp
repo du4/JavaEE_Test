@@ -1,9 +1,29 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<%--<p>INDEX: ${message}</p>--%>
-
-<%@ include file="main.jsp" %>
+<table width="100%" border="1" cellpadding="1" cellspacing="1">
+    <tbody>
+    <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Company</th>
+        <th scope="col">Departure Time</th>
+        <th scope="col">Arrival Time</th>
+        <th scope="col">Plane</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Crew</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
 
 
 <%@ include file="include/end-html.jsp" %>
