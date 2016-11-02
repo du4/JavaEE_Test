@@ -13,7 +13,7 @@ class CmdProfile extends Action {
         }else {
             request.removeAttribute("user");
         }
-        HttpSessionAttrUpdater.updateList  ( request, "roles");
+        HttpSessionAttrHelper.updateRole(request);
         return null;
     }
 }

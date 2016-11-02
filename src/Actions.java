@@ -16,10 +16,10 @@ enum Actions {
 
     public static Action defineFrom(HttpServletRequest request){
         Action result ;
-        String command = request.getParameter("command").toUpperCase();
+        String command = request.getParameter("command");
         if (command != null) {
             try {
-                result = Actions.valueOf(command).action;
+                result = Actions.valueOf(command.toUpperCase()).action;
             } catch (IllegalArgumentException e) {
                 result = Actions.ERROR.action;
             }

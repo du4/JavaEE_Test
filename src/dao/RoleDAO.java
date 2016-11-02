@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-class RoleDAO extends AbstractDAO implements IDAO<Role> {
+public class RoleDAO extends AbstractDAO implements IDAO<Role> {
     @Override
     public List<Role> getAll(String WHERE) {
         List<Role> roles = new ArrayList<>();

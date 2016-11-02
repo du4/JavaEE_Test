@@ -1,7 +1,3 @@
-
-
-import beans.User;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +7,7 @@ class CmdLogout extends Action {
         HttpSession session = request.getSession();
 
         if (request.getMethod().equalsIgnoreCase("post")){
+            request.removeAttribute("user");
             session.invalidate();
             return Actions.LOGIN.action;
         }

@@ -1,7 +1,7 @@
 import javax.servlet.http.HttpServletRequest;
 
 abstract public class Action {
-    abstract Action execute(HttpServletRequest reg);
+    abstract Action execute(HttpServletRequest request);
 
     public Action getRedirectAction() {
         return redirectAction;

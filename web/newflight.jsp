@@ -103,6 +103,18 @@
             </div>
         </div>
 
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="crew">Crew</label>
+            <div class="col-md-4">
+                <select id="crew" name="crew" role="selectbasicTo" class="form-control">
+                    <c:forEach items="${crews}" var="crew">
+                        <option value=${crew.id}>${crew.id}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>

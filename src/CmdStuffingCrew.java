@@ -44,7 +44,7 @@ class CmdStuffingCrew extends Action {
             DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
             if (dao.crewDAO.create(crew)>0) {
                 request.setAttribute(AttrMessages.msgMessage, "New crew is created.");
-                return  null;
+                return Actions.INDEX.action;
             } else {
                 request.setAttribute(AttrMessages.msgError, "Crew does not created. " + dao.crewDAO.lastSQL);
             }

@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Timestamp;
 
@@ -21,7 +22,7 @@ public class FrontController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute(CSPATH, csPath);
-        writeSessionStr(request);
+        writeUpdSessionStr(request);
 
         Action action = Actions.defineFrom(request);
         Action nextAction = action.execute(request);
@@ -32,14 +33,13 @@ public class FrontController extends HttpServlet {
         }else {
             response.sendRedirect("airport?command="+nextAction);
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute(CSPATH, csPath);
 
-        writeSessionStr(request);
+        writeUpdSessionStr(request);
 
         Action action = Actions.defineFrom(request);
         action.execute(request);
@@ -47,11 +47,15 @@ public class FrontController extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
 
-    private void writeSessionStr(HttpServletRequest request){
-        User userFromSession =  (User)request.getSession().getAttribute("user");
+    private void writeUpdSessionStr(HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        User userFromSession =  (User)session.getAttribute("user");
         if (userFromSession != null) {
-            request.setAttribute("curUser","Session info: user.login="+userFromSession.getLogin()+", created at-" +new Timestamp(request.getSession().getLastAccessedTime()));
-            request.getSession().setAttribute("user",userFromSession); // update session
+            request.setAttribute("curUser","Session info: user.login="+userFromSession.getLogin()+", created at-" +new Timestamp(session.getLastAccessedTime()));
+            request.setAttribute("user",userFromSession);
+//            session.setAttribute("user",userFromSession); // update session
+        }else {
+            request.setAttribute("user",null);
         }
     }
 }

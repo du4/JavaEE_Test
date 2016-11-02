@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -34,21 +35,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="airport">Airport</a>
+                <a class="navbar-brand" href="/airport">Main</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="airport?command=ListUsers">List Users</a></li>
-
-                    <li><a href="airport?command=NewFlight">New flight</a></li>
-                    <li><a href="airport?command=StuffingCrew">Add Flight Crew</a></li>
+                    <c:if test="${user.role==1}">
+                        <li><a href="airport?command=ListUsers">List Users</a></li>
+                        <li><a href="airport?command=NewFlight">New flight</a></li>
+                        <li><a href="airport?command=StuffingCrew">Add Flight Crew</a></li>
+                    </c:if>
+                    <c:if test="${user.role==2}">
+                        <%--<li><a href="airport?command=NewFlight">New flight</a></li>--%>
+                        <li><a href="airport?command=StuffingCrew">Add Flight Crew</a></li>
+                    </c:if>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="airport?command=SignUp">Sign Up</a></li>
-                    <li><a href="airport?command=Login">Login</a></li>
-                    <li><a href="airport?command=Logout">Logout</a></li>
-                    <li><a href="airport?command=Profile">Profile</a></li>
+                    <li>
+                        <c:if test="${user==null}">
+                            <li><a href="airport?command=Login">Login</a></li>
+                            <li><a href="airport?command=SignUp">SignUp</a></li>
+                        </c:if>
+                        <c:if test="${user!=null}">
+                            <li><a href="airport?command=Logout">Logout</a></li>
+                            <li><a href="airport?command=Profile">Profile</a></li>
+                        </c:if>
+
+                    </li>
+
+                    <%--<li><a href="airport?command=SignUp">Sign Up</a></li>--%>
+                    <%--<li><a href="airport?command=Login">Login</a></li>--%>
+                    <%--<li><a href="airport?command=Logout">Logout</a></li>--%>
+                    <%--<li><a href="airport?command=Profile">Profile</a></li>--%>
                     <%--<li><a href="/manager/html/list">Tomcat</a></li>--%>
                 </ul>
             </div><!--/.nav-collapse -->
