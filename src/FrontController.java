@@ -50,6 +50,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void writeUpdSessionStr(HttpServletRequest request) {
+        HttpSessionAttrHelper.setCmdToAttribute(request);
+
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("user");
 

@@ -101,6 +101,23 @@ class HttpSessionAttrHelper {
         }
     }
 
+    static void setCmdToAttribute(HttpServletRequest request){
+        Object o = request.getSession().getAttribute("commands");
+        List<Command> commands;
+        if (o != null) {
+            if (o instanceof List) {
+                commands = (List<Command>) o;
+                request.setAttribute("commands", commands);
+            }
+        }else {
+            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            commands = dao.commandDAO.getAll("");
+            request.setAttribute("commands", commands);
+            request.getSession().setAttribute("commands", commands);
+        }
+    }
+
+
     static boolean isAdministrator(HttpServletRequest request){
         HttpSession session = request.getSession();
         Object o = session.getAttribute("user");

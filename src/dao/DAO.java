@@ -16,6 +16,7 @@ public class DAO {
     public UserDAO userDAO;                    //DAO for users
     public RoleDAO roleDAO;                    //DAO for roles
     public CrewDAO crewDAO;                 //DAO for crews
+    public CommandDAO commandDAO;           // DAO for cmd
     //...
 
     public static DAO getDAO(String path) {   //singletone method
@@ -33,6 +34,7 @@ public class DAO {
                     dao.flightDAO = new FlightDAO();
                     dao.fligthStrDAO = new FligthStrDAO();
                     dao.crewDAO = new CrewDAO();
+                    dao.commandDAO = new CommandDAO();
                 }
             }
         }

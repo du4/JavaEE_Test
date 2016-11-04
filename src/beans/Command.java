@@ -7,7 +7,13 @@ public class Command {
     private int role;
 
     public Command() {
+    }
 
+    public Command(int id, String action, boolean permission, int role) {
+        this.id = id;
+        this.action = action;
+        this.permission = permission;
+        this.role = role;
     }
 
     public int getId() {
