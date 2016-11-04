@@ -15,12 +15,12 @@
     <servlet-mapping>
         <servlet-name>AirportDu4</servlet-name>
         <url-pattern>/airport</url-pattern>
-        <!--<url-pattern>/</url-pattern>-->
+        <!--<url-pattern></url-pattern>-->
     </servlet-mapping>
 
-    <welcome-file-list>
-        <welcome-file>INDEX</welcome-file>
-    </welcome-file-list>
+   <!--<welcome-file-list>-->
+        <!--<welcome-file>INDEX</welcome-file>-->
+    <!--</welcome-file-list>-->
 
     <session-config>
         <session-timeout>

@@ -3,10 +3,11 @@ import beans.User;
 import dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 class CmdSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
 
         if (request.getMethod().equals("POST")) {
             User user = new User();
@@ -36,7 +37,7 @@ class CmdSignUp extends Action {
             return  Actions.INDEX.action;
         }else {
 
-            HttpSessionAttrHelper.updateRole(request);
+            HttpSessionAttrHelper.setRolesToAttribute(request);
 //            Object o = request.getSession().getAttribute("roles");
 //            if (o != null) {
 //                if (o instanceof List) {

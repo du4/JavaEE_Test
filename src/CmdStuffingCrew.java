@@ -1,30 +1,16 @@
-import beans.Airhostess;
 import beans.Crew;
-import beans.Pilot;
 import dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 
 class CmdStuffingCrew extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
-        if (request.getMethod().equals("GET")) {
-            String path = request.getParameter(FrontController.CSPATH);
-            DAO dao = DAO.getDAO(path);
-            List<Pilot> pilots = dao.pilotDAO.getAll("");
-            List<Airhostess> airhostesses = dao.airhostessDAO.getAll("");
-
-            if (pilots == null || airhostesses == null) {
-                request.setAttribute(AttrMessages.msgError, "Wrong data.");
-                return null;
-            } else {
-//            request.setAttribute(AttrMessages.msgMessage,"Read PlanesCount=" + planes.size());
-                request.setAttribute("pilots", pilots);
-                request.setAttribute("airhostesses", airhostesses);
-                return null;
-            }
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getMethod().equalsIgnoreCase("GET")) {
+            HttpSessionAttrHelper.setPilotsToAttribute(request);
+            HttpSessionAttrHelper.setAirhostessToAttribute(request);
         }else{// POST
 
             Crew crew = new Crew();
@@ -35,6 +21,12 @@ class CmdStuffingCrew extends Action {
                 crew.setPilot2(Integer.parseInt(Form.getString(request,"pilot2", Patterns.INT)));
                 crew.setAirhostess1(Integer.parseInt(Form.getString(request,"airhostess1", Patterns.INT)));
                 crew.setAirhostess2(Integer.parseInt(Form.getString(request,"airhostess2", Patterns.INT)));
+                if (crew.getPilot1() == crew.getPilot2()){
+                    throw new Exception("Select different pilots");
+                }
+                if (crew.getAirhostess1() == crew.getAirhostess2()){
+                    throw new Exception("Select different airhostesses");
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -44,12 +36,10 @@ class CmdStuffingCrew extends Action {
             DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
             if (dao.crewDAO.create(crew)>0) {
                 request.setAttribute(AttrMessages.msgMessage, "New crew is created.");
-                return Actions.INDEX.action;
             } else {
                 request.setAttribute(AttrMessages.msgError, "Crew does not created. " + dao.crewDAO.lastSQL);
             }
-            return null;
         }
-
+        return null;
     }
 }

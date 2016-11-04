@@ -17,7 +17,7 @@ enum Actions {
     public static Action defineFrom(HttpServletRequest request){
         Action result ;
         String command = request.getParameter("command");
-        if (command != null) {
+        if (command != null && !command.isEmpty()) {
             try {
                 result = Actions.valueOf(command.toUpperCase()).action;
             } catch (IllegalArgumentException e) {
