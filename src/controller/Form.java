@@ -8,11 +8,15 @@ public class Form {
                             String parameter,
                             String pattern) throws ParseException {
         String value=req.getParameter(parameter);
-        if (value!=null )
-            if( value.matches(pattern))
+        if (value!=null ) {
+            if (value.matches(pattern)) {
                 return value;
-        else
-            throw new ParseException("Incorrect String: "+parameter,0);
+            }else {
+                throw new ParseException("Incorrect String: "+parameter,0);
+            }
+        }else {
+            throw new NullPointerException("Empty HttpRequest parameter " + parameter);
+        }
     }
 
     static int getInt(HttpServletRequest req,

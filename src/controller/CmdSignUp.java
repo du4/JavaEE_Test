@@ -1,5 +1,6 @@
 package controller;
 
+import beans.Role;
 import beans.User;
 import dao.DAO;
 
@@ -14,10 +15,13 @@ class CmdSignUp extends Action {
             User user = new User();
             user.setId(0);
             try {
+                if (!Form.getString(request, "pass", Patterns.PASSWORD).equals(Form.getString(request, "passConfirm", Patterns.PASSWORD))){
+                    throw  new IllegalArgumentException("Passwords don't match");
+                }
                 user.setLogin(Form.getString(request, "login", Patterns.LOGIN));
                 user.setEmail(Form.getString(request, "email", Patterns.EMAIL));
                 user.setPass(Form.getString(request, "pass", Patterns.PASSWORD));
-                user.setRole(Integer.parseInt(request.getParameter("role")));
+                user.setRole(Role.USER_ROLE);
 
             } catch (Exception e) {
                 request.setAttribute(AttrMessages.msgError, "Invalid field format. " + e.toString());
@@ -36,24 +40,10 @@ class CmdSignUp extends Action {
                 request.setAttribute(AttrMessages.msgError, "User does not created. Create new user again. " + dao.userDAO.lastSQL);
             }
             return  Actions.INDEX.action;
-        }else {
-
-            SessionAttrSesHelper.setRolesToAttribute(request);
-//            Object o = request.getSession().getAttribute("roles");
-//            if (o != null) {
-//                if (o instanceof List) {
-//                    List<Role> roleList = (List<Role>) o;
-//                    request.setAttribute("roles", roleList);
-//                    request.getSession().setAttribute("roles",roleList);
-//                }
-//            }else {
-//                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
-//                List<Role> roles = dao.roleDAO.getAll("");
-//                request.setAttribute("roles",roles);
-//                request.getSession().setAttribute("roles",roles);
-//            }
-
         }
+//        else {
+//            SessionAttrSesHelper.setRolesToAttribute(request);
+//        }
 
         return null;
     }
