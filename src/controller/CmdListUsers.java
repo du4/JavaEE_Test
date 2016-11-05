@@ -1,3 +1,5 @@
+package controller;
+
 import beans.User;
 import dao.DAO;
 
@@ -13,7 +15,7 @@ class CmdListUsers extends Action {
         if (request.getMethod().equalsIgnoreCase("POST")){
             User user=new User();
             try {
-                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+                DAO dao = DAO.getDAO();
                 user.setId(Form.getInt(request,"ID"));
                 user.setLogin(Form.getString(request, "Login", Patterns.LOGIN));
                 user.setPass(Form.getString(request, "Password", Patterns.PASSWORD));
@@ -41,9 +43,9 @@ class CmdListUsers extends Action {
         }else {//GET
 
             // here must placed authorization
-            HttpSessionAttrHelper.setRolesToAttribute(request);
+            SessionAttrSesHelper.setRolesToAttribute(request);
 
-            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            DAO dao = DAO.getDAO();
             List<User> users=dao.userDAO.getAll("");
 
             if (users==null) {

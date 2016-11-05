@@ -17,14 +17,14 @@ public class DAO {
     public RoleDAO roleDAO;                    //DAO for roles
     public CrewDAO crewDAO;                 //DAO for crews
     public CommandDAO commandDAO;           // DAO for cmd
+    public PermissionDAO permissionDAO;     // DAO for permission
     //...
 
-    public static DAO getDAO(String path) {   //singletone method
+    public static DAO getDAO() {   //singletone method
         if (dao == null) {
             synchronized (DAO.class) {
                 if (dao == null) {
                     dao = new DAO();
-                    ConnectionCreator.path = path;
                     dao.airhostessDAO = new AirhostessDAO();
                     dao.airportsDAO = new AirportsDAO();
                     dao.pilotDAO = new PilotDAO();
@@ -35,6 +35,7 @@ public class DAO {
                     dao.fligthStrDAO = new FligthStrDAO();
                     dao.crewDAO = new CrewDAO();
                     dao.commandDAO = new CommandDAO();
+                    dao.permissionDAO = new PermissionDAO();
                 }
             }
         }

@@ -1,3 +1,5 @@
+package controller;
+
 import beans.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ class CmdProfile extends Action {
         }else {
             request.removeAttribute("user");
         }
-        HttpSessionAttrHelper.setRolesToAttribute(request);
+        SessionAttrSesHelper.setRolesToAttribute(request);
         return null;
     }
 }

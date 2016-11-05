@@ -1,3 +1,5 @@
+package controller;
+
 import beans.User;
 import dao.DAO;
 
@@ -17,7 +19,7 @@ class CmdLogin extends Action {
                 user.setLogin(Form.getString(request, "login", Patterns.LOGIN));
                 user.setPass(Form.getString(request, "pass", Patterns.PASSWORD));
 
-                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+                DAO dao = DAO.getDAO();
                 List<User> userList = dao.userDAO.getAll(String.format("WHERE login='%s' AND pass='%s'", user.getLogin(), user.getPass()));
                 if (userList.size() > 0) {
                     request.setAttribute(AttrMessages.msgMessage, "User login - OK ");

@@ -1,3 +1,4 @@
+package controller;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -36,8 +37,8 @@ public class FilterUTF8 implements Filter {
         HttpServletRequest req=(HttpServletRequest)request;
 
         //получение сессии
-        HttpSession session=req.getSession(true);
-        session.setAttribute(AttrMessages.msgMessage,"Это сообщение из фильтра");
+//        HttpSession session=req.getSession(true);
+//        session.setAttribute(AttrMessages.msgMessage,"Это сообщение из фильтра");
         //обработка прочих фильтров сервлетов и jsp
         chain.doFilter(request, response);
 

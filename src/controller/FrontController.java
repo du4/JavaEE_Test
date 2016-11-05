@@ -1,4 +1,7 @@
+package controller;
+
 import beans.User;
+import connection.ConnectionSettings;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,18 +14,22 @@ import java.sql.Timestamp;
 
 //@WebServlet("/airport")
 public class FrontController extends HttpServlet {
-    static final String CSPATH = "csPath";
+    public static ConnectionSettings connectionSettings;
     private String csPath;
+
 
     @Override
     public void init() throws ServletException {
         csPath = getServletContext().getRealPath("/WEB-INF/CSettings.json");
+        connectionSettings = ConnectionSettings.getCS(getInitParameter("URL_DB"),getInitParameter("USER_DB"), getInitParameter("PASSWORD_DB"));
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute(CSPATH, csPath);
-        writeUpdSessionStr(request);
+
+        updateSessionCash(request);
+        setUserToAttribute(request);
 
         Action action = Actions.defineFrom(request);
         Action nextAction = action.execute(request, response);
@@ -37,8 +44,9 @@ public class FrontController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute(CSPATH, csPath);
-        writeUpdSessionStr(request);
+
+        updateSessionCash(request);
+        setUserToAttribute(request);
 
         Action action = Actions.defineFrom(request);
         action.execute(request, response);
@@ -49,8 +57,12 @@ public class FrontController extends HttpServlet {
 
     }
 
-    private void writeUpdSessionStr(HttpServletRequest request) {
-        HttpSessionAttrHelper.setCmdToAttribute(request);
+    private void updateSessionCash(HttpServletRequest request){
+        SessionAttrSesHelper.setCommandToAttribute(request);
+        SessionAttrSesHelper.setPermissionToAttribute(request);
+    }
+
+    private void setUserToAttribute(HttpServletRequest request) {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("user");

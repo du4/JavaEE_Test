@@ -1,3 +1,5 @@
+package controller;
+
 import beans.Crew;
 import dao.DAO;
 
@@ -9,8 +11,8 @@ class CmdStuffingCrew extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) {
         if (request.getMethod().equalsIgnoreCase("GET")) {
-            HttpSessionAttrHelper.setPilotsToAttribute(request);
-            HttpSessionAttrHelper.setAirhostessToAttribute(request);
+            SessionAttrSesHelper.setPilotsToAttribute(request);
+            SessionAttrSesHelper.setAirhostessToAttribute(request);
         }else{// POST
 
             Crew crew = new Crew();
@@ -33,7 +35,7 @@ class CmdStuffingCrew extends Action {
                 request.setAttribute("msgError", "Invalid field format. "+e.toString());
                 return null;
             }
-            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            DAO dao = DAO.getDAO();
             if (dao.crewDAO.create(crew)>0) {
                 request.setAttribute(AttrMessages.msgMessage, "New crew is created.");
             } else {

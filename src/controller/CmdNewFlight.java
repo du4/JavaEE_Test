@@ -1,11 +1,11 @@
+package controller;
+
 import beans.*;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 class CmdNewFlight extends Action {
@@ -50,7 +50,7 @@ class CmdNewFlight extends Action {
                 return null;
             }
 
-            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            DAO dao = DAO.getDAO();
             if (dao.flightDAO.create(flight)>0) {
                 request.setAttribute(AttrMessages.msgMessage, "New flight is created.");
                 return  Actions.INDEX.action;
@@ -59,9 +59,9 @@ class CmdNewFlight extends Action {
                 return  Actions.NEWFLIGHT.action;
             }
         }else{
-            HttpSessionAttrHelper.setAirportsToAttribute(request);
-            HttpSessionAttrHelper.setPlanesToAttribute(request);
-            HttpSessionAttrHelper.setCrewsToAttribute(request);
+            SessionAttrSesHelper.setAirportsToAttribute(request);
+            SessionAttrSesHelper.setPlanesToAttribute(request);
+            SessionAttrSesHelper.setCrewsToAttribute(request);
         }
         return null;
     }

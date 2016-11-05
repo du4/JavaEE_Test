@@ -1,4 +1,6 @@
-public interface Patterns {
+package controller;
+
+interface Patterns {
     String LOGIN="[a-zA-Z0-9-_.:]+";
     String COMPANY="[a-Z0-9 ]+";
     String PASSWORD=".+";

@@ -1,4 +1,7 @@
+package controller;
+
 import beans.Command;
+import beans.Permission;
 import beans.Role;
 import beans.User;
 
@@ -40,25 +43,33 @@ enum Actions {
         }
         return result;
     }
-
+    @SuppressWarnings("unchecked")
     private static boolean checkPermission(String cmd, HttpServletRequest request){
         HttpSession session = request.getSession();
-        Object o =  session.getAttribute("commands");
+        List <Command> commands = (List<Command>) session.getAttribute("commands");
+        int commandID=-1;
+        for (int i = 0 ; i < commands.size(); i++) {
+            if (commands.get(i).getName().equalsIgnoreCase(cmd)){
+                commandID=i+1;
+                break;
+            }
+        }
+
+        if (commandID==-1)return false;
+
+        List<Permission> permissions = (List<Permission>) session.getAttribute("permissions");
         User user = (User) session.getAttribute("user");
         if (user == null){
             user = new User("tmpUser");
         }
+
         if (user.getRole() == Role.ADMINISTRATOR_ROLE){
             return true;
         }
-        if (o != null){
-            if (o instanceof List){
-                List<Command> commands = (List<Command>) o;
-                for (Command c:commands) {
-                    if (c.getAction().equals(cmd) && user.getRole()==c.getRole() && c.isPermission()){
-                        return true;
-                    }
-                }
+
+        for (Permission p:permissions) {
+            if (p.getCommand()==commandID && user.getRole()==p.getRole() && p.isPermission()){
+                return true;
             }
         }
         return false;

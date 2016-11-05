@@ -1,3 +1,4 @@
+package controller;
 
 import beans.User;
 import dao.DAO;
@@ -27,7 +28,7 @@ class CmdSignUp extends Action {
             // нужно "солить" и хешировать.
 
             //проверим поля (добавьте паттерны самостоятельно)
-            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            DAO dao = DAO.getDAO();
             if (dao.userDAO.create(user) > 0) {
                 request.setAttribute(AttrMessages.msgMessage, "New user is created. Input new user login and password.");
 //                return Actions.SIGNUP.action;
@@ -37,7 +38,7 @@ class CmdSignUp extends Action {
             return  Actions.INDEX.action;
         }else {
 
-            HttpSessionAttrHelper.setRolesToAttribute(request);
+            SessionAttrSesHelper.setRolesToAttribute(request);
 //            Object o = request.getSession().getAttribute("roles");
 //            if (o != null) {
 //                if (o instanceof List) {
