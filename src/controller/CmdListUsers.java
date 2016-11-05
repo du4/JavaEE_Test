@@ -12,10 +12,12 @@ class CmdListUsers extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) {
 
+        DAO dao = DAO.getDAO();
+
         if (request.getMethod().equalsIgnoreCase("POST")){
             User user=new User();
             try {
-                DAO dao = DAO.getDAO();
+
                 user.setId(Form.getInt(request,"ID"));
                 user.setLogin(Form.getString(request, "Login", Patterns.LOGIN));
                 user.setPass(Form.getString(request, "Password", Patterns.PASSWORD));
@@ -37,25 +39,18 @@ class CmdListUsers extends Action {
                 e.printStackTrace();
                 request.setAttribute(AttrMessages.msgMessage,"Error");
             }
-
-
-           return  null;
-        }else {//GET
-
-            // here must placed authorization
-            SessionAttrSesHelper.setRolesToAttribute(request);
-
-            DAO dao = DAO.getDAO();
-            List<User> users=dao.userDAO.getAll("");
-
-            if (users==null) {
-                request.setAttribute( AttrMessages.msgError,"No users found." + dao.userDAO.lastSQL);
-            } else {
-                request.setAttribute(AttrMessages.msgMessage,"Read usersCount=" + users.size());
-                request.setAttribute("users", users);
-            }
-            return null;
         }
+
+        SessionAttrSesHelper.setRolesToAttribute(request);
+        List<User> users=dao.userDAO.getAll("");
+        if (users==null) {
+            request.setAttribute( AttrMessages.msgError,"No users found." + dao.userDAO.lastSQL);
+        } else {
+            request.setAttribute(AttrMessages.msgMessage,"Read usersCount=" + users.size());
+            request.setAttribute("users", users);
+        }
+        return null;
+
 
     }
 }

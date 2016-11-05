@@ -46,14 +46,13 @@
             </div>
 
             <div class=col-md-1>
-                <button id="singlebutton" name="singlebutton" class="btn btn-success">
+                <button id="singlebutton1" name="singlebutton1" class="btn btn-success">
                     Update
                 </button>
             </div>
 
             <div class=col-md-1>
-                <button id="singlebutton" name="singlebutton"
-                        class="btn btn-danger"
+                <button id="singlebutton" name="singlebutton" class="btn btn-danger"
                         onclick="document.getElementById('user_id_${user.id}').value=-document.getElementById('user_id_${user.id}').value;"
                 >
                     Delete
