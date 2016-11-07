@@ -1,6 +1,5 @@
 package controller;
 
-import beans.Flight;
 import beans.FlightStr;
 import dao.DAO;
 
@@ -12,52 +11,38 @@ import java.util.List;
 class CmdIndex extends Action {
     @Override
     Action execute(HttpServletRequest request, HttpServletResponse response) {
+        DAO dao = DAO.getDAO();
+        int startNumber = 0;
+        String limit ="";
 
-//        DAO dao = DAO.getDAO();
-//        int startNumber = 0;
-//        try {
-//            startNumber = Form.getInt(req, "startNumber");
-//        } catch (ParseException e) {
-//            startNumber = 0;
-//        }
-//        String limit = String.format(" LIMIT %s,%s", startNumber, 10);
-//        List<Ad> ads = dao.ad.getAll(limit);
-//        req.setAttribute("adCount", dao.ad.getCount(""));
-//        for (Ad ad : ads) {
-//            ad.setViewNumber(++startNumber);
-//        }
-//        req.setAttribute("ads", ads);
-//        return null;
-
-
-        if (request.getMethod().equalsIgnoreCase("get")){
-            DAO dao = DAO.getDAO();
-            int startNumber = 0;
+        if (request.getMethod().equalsIgnoreCase("post")) {
             try {
-                startNumber = Form.getInt(request, "startNumber");
-            } catch (ParseException e) {
-                startNumber = 0;
-            }
-            String limit = String.format(" LIMIT %s,%s", startNumber, 10);
-            List<FlightStr> flightStrs = dao.fligthStrDAO.getAll(limit);
-            request.setAttribute("adCount", dao.fligthStrDAO.getCount(""));
-            for (FlightStr flight : flightStrs) {
-                flight.setViewNumber(++startNumber);
-            }
-            request.setAttribute("flights", flightStrs);
-            return null;
-//                List<FlightStr> flights = dao.fligthStrDAO.getAll("");
+                limit = "WHERE toPort="+Integer.parseInt(Form.getString(request,"to",Patterns.INT));
+                limit += " AND fromPort="+Integer.parseInt(Form.getString(request,"from",Patterns.INT))+" ";
 
-//                if (flights == null) {
-//                    request.setAttribute(AttrMessages.msgError, "Wrong data." + dao.fligthStrDAO.lastSQL);
-//                    return Actions.INDEX.action;
-//                } else {
-//                    request.setAttribute(AttrMessages.msgMessage, "Read flightsCount=" + flights.size());
-//                    request.setAttribute("flights", flights);
-//                    return Actions.INDEX.action;
-//                }
-//            }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
         }
-        return Actions.INDEX.action;
+
+
+        try {
+            startNumber = Form.getInt(request, "startNumber");
+        } catch (ParseException e) {
+            startNumber = 0;
+        }
+         limit += String.format(" LIMIT %s,%s", startNumber, 10);
+        List<FlightStr> flightStrs = dao.fligthStrDAO.getAll(limit);
+        request.setAttribute("adCount", dao.fligthStrDAO.getCount(""));
+        for (FlightStr flight : flightStrs) {
+            flight.setViewNumber(++startNumber);
+        }
+        request.setAttribute("flights", flightStrs);
+        SessionAttrSesHelper.setAirportsToAttribute(request);
+        return null;
+
+
+//        return Actions.INDEX.action;
     }
 }

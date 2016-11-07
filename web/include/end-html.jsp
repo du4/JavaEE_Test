@@ -1,11 +1,11 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
     </div>
-    <div class="col-sm-2 sidenav"></div>
+    <div class="col-sm-1 sidenav"></div>
 </div>
 
 
 <footer class="container-fluid text-center">
-    <%--<p align="left">${curUser}</p>--%>
+    <p align="right">${jsp_error}</p>
     <p><p>du4 © 2016 Shkantau Aliaksei</p></p>
 </footer>
 

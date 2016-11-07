@@ -13,9 +13,19 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+
+
 </head>
 <body>
-<img width="100%" height="50%" src="include/logo.jpg">
+<%--<img width="100%" height="50%" src="include/logo.jpg">--%>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -56,7 +66,7 @@
                     <li><a href="airport?command=SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
                 </c:if>
                 <c:if test="${user!=null}">
-                    <li><a href="#" data-toggle="tooltip" title="${curUser}"><span class="glyphicon glyphicon-check"></span>  user=${user.login}</a></li>
+                    <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="${curUser}"><span class="glyphicon glyphicon-check"></span>  user=${user.login}</a></li>
                     <li><a href="airport?command=Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     <li><a href="airport?command=Profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                 </c:if>
@@ -66,5 +76,5 @@
 </nav>
 
 <div class="row content">
-    <div class="col-sm-2 sidenav"></div>
+    <div class="col-sm-1 sidenav"></div>
     <div class="col-sm-8 text-left">

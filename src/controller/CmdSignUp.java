@@ -15,11 +15,11 @@ class CmdSignUp extends Action {
             User user = new User();
             user.setId(0);
             try {
+                user.setLogin(Form.getString(request, "login", Patterns.LOGIN));
+                user.setEmail(Form.getString(request, "email", Patterns.EMAIL));
                 if (!Form.getString(request, "pass", Patterns.PASSWORD).equals(Form.getString(request, "passConfirm", Patterns.PASSWORD))){
                     throw  new IllegalArgumentException("Passwords don't match");
                 }
-                user.setLogin(Form.getString(request, "login", Patterns.LOGIN));
-                user.setEmail(Form.getString(request, "email", Patterns.EMAIL));
                 user.setPass(Form.getString(request, "pass", Patterns.PASSWORD));
                 user.setRole(Role.USER_ROLE);
 
