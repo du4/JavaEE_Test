@@ -17,8 +17,8 @@ class CmdIndex extends Action {
 
         if (request.getMethod().equalsIgnoreCase("post")) {
             try {
-                limit = "WHERE toPort="+Integer.parseInt(Form.getString(request,"to",Patterns.INT));
-                limit += " AND fromPort="+Integer.parseInt(Form.getString(request,"from",Patterns.INT))+" ";
+                limit = "WHERE fromPort="+Integer.parseInt(Form.getString(request,"from",Patterns.INT));
+                limit += " AND toPort="+Integer.parseInt(Form.getString(request,"to",Patterns.INT))+" ";
 
             } catch (Exception e) {
                 e.printStackTrace();

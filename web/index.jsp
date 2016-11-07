@@ -9,36 +9,47 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <form class="form-find" action="airport?command=index" method=POST>
 
-            <label class="col-md-1 control-label" for="to">To</label>
-            <!-- Select Basic -->
-            <div class="col-md-2">
-                <select id="to" name="to" class="form-control">
-                    <option value="" selected disabled>Please select</option>
-                    <c:forEach items="${airports}" var="airport">
-                        <option value=${airport.id}>${airport.acronim}</option>
-                    </c:forEach>
-                </select>
+    <div class="panel panel-warning">
+        <div class="panel-heading">Find panel</div>
+        <div class="panel-body">
+            <div class="row">
+                <form class="form-find" action="airport?command=index" method=POST>
+                   <!-- Select Basic -->
+                    <div class="col-md-2">
+                        <select id="from" name="from"  class="form-control">
+                            <option value="" selected disabled>Departure</option>
+                            <c:forEach items="${airports}" var="airport">
+                                <option value=${airport.id}>${airport.acronim}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="col-md-2">
+                        <select id="to" name="to" class="form-control">
+                            <option value="" selected disabled>Destination</option>
+                            <c:forEach items="${airports}" var="airport">
+                                <option value=${airport.id}>${airport.acronim}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                    <div class=col-md-1>Departure time</div>
+                    <div class=col-md-2>
+                        <input name="departureTime" size="16" type="text" value="" readonly class="form_datetime">
+                    </div>
+
+                    <div class=col-md-1>Arrival time</div>
+                    <div class=col-md-2>
+                        <input name="arrivalTime" size="16" type="text" value="" readonly class="form_datetime">
+                    </div>
+                    <!-- Button -->
+                    <div class="col-md-2">
+                        <button id="singlebutton" class="btn btn-success">Find</button>
+                    </div>
+                </form>
             </div>
-
-            <label class="col-md-1 control-label" for="from">From</label>
-            <!-- Select Basic -->
-            <div class="col-md-2">
-                <select id="from" name="from"  class="form-control">
-                    <option value="" selected disabled>Please select</option>
-                    <c:forEach items="${airports}" var="airport">
-                        <option value=${airport.id}>${airport.acronim}</option>
-                    </c:forEach>
-                </select>
-            </div>
-
-            <!-- Button -->
-                <div class="col-md-2">
-                    <button id="singlebutton" class="btn btn-success">Find</button>
-                </div>
-        </form>
+        </div>
     </div>
 
 
@@ -50,8 +61,8 @@
             <th>Departure Time</th>
             <th>Arrival Time</th>
             <th>Plane</th>
-            <th>To</th>
             <th>From</th>
+            <th>To</th>
             <th>Crew</th>
             <th>User</th>
         </tr>
@@ -64,8 +75,8 @@
                 <td>${flight.departure_time}</td>
                 <td>${flight.arrival_time}</td>
                 <td>${flight.plane}</td>
-                <td>${flight.to}</td>
                 <td>${flight.from}</td>
+                <td>${flight.to}</td>
                 <td>${flight.crew}</td>
                 <td>${flight.user}</td>
                 </tr>
@@ -81,7 +92,12 @@
     </form>
 
 
+<%--<script type="text/javascript" src="jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>--%>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+</script>
 
 
 <%@ include file="include/end-html.jsp" %>
