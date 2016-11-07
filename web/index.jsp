@@ -1,54 +1,59 @@
-
+<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
 
-<form class="form-horizontal" action="airport?command=Index" method="POST">
-    <fieldset>
+<div class="page-header">
+    <h3 align="center">Flight time-table</h3>
+</div>
 
-        <table width="100%" border="1" cellpadding="2" cellspacing="2">
-            <tbody>
-            <tr>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Code</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Company</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Departure Time</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Arrival Time</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Plane</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">From</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">To</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Crew</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">User</th>
-            </tr>
-
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Company</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Plane</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Crew</th>
+            <th>User</th>
+        </tr>
+        </thead>
+        <tbody>
             <c:forEach items="${flights}" var="flight">
                 <tr>
-                    <td align="center"> ${flight.flightCode}</td>
-                    <td align="center">${flight.company}</td>
-                    <td align="center">${flight.departure_time}</td>
-                    <td align="center">${flight.arrival_time}</td>
-                    <td align="center">${flight.plane}</td>
-                    <td align="center">${flight.to}</td>
-                    <td align="center">${flight.from}</td>
-                    <td align="center">${flight.crew}</td>
-                    <td align="center">${flight.user}</td>
+                <td>${flight.flightCode} </td>
+                <td>${flight.company}</td>
+                <td>${flight.departure_time}</td>
+                <td>${flight.arrival_time}</td>
+                <td>${flight.plane}</td>
+                <td>${flight.to}</td>
+                <td>${flight.from}</td>
+                <td>${flight.crew}</td>
+                <td>${flight.user}</td>
                 </tr>
             </c:forEach>
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+    </div>
 
-        <br/>
-        <br/>
+    <br><br>(${adCount})
+    <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
-        <!-- Button -->
-        <%--<div class="form-group">--%>
-            <%--<label class="col-md-4 control-label" for="singlebutton"></label>--%>
-            <%--<div class="col-md-4">--%>
-                <%--<button id="singlebutton" class="btn btn-success">Refresh</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+<%--<ul class="pagination">--%>
+    <%--<li><a href="#">1</a></li>--%>
+    <%--<li><a href="#">2</a></li>--%>
+    <%--<li><a href="#">3</a></li>--%>
+    <%--<li><a href="#">4</a></li>--%>
+    <%--<li><a href="#">5</a></li>--%>
+<%--</ul>--%>
 
     </fieldset>
-</form>
+    </form>
 
 
 

@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class FlightStr {
     private int id = 0;
+    private int viewNumber;
     private String flightCode;
     private String company;
     private Timestamp departure_time;
@@ -36,6 +37,14 @@ public class FlightStr {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getViewNumber() {
+        return viewNumber;
+    }
+
+    public void setViewNumber(int viewNumber) {
+        this.viewNumber = viewNumber;
     }
 
     public String getFlightCode() {

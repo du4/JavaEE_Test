@@ -1,7 +1,5 @@
 package dao;
 
-import connection.ConnectionCreator;
-
 public class DAO {
 
     private static DAO dao; //синглтон для DAO

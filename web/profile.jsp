@@ -34,16 +34,16 @@
 
 
         <!-- Select Basic -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="role">Select role</label>
-            <div class="col-md-4">
-                <select id="role" name="role"  class="form-control">
-                    <c:forEach items="${roles}" var="role">
-                        <option value=${role.id}>${role.role}</option>
-                    </c:forEach>
-                </select>
-            </div>
-        </div>
+        <%--<div class="form-group">--%>
+            <%--<label class="col-md-4 control-label" for="role">Select role</label>--%>
+            <%--<div class="col-md-4">--%>
+                <%--<select id="role" name="role"  class="form-control">--%>
+                    <%--<c:forEach items="${roles}" var="role">--%>
+                        <%--<option value=${role.id}>${role.role}</option>--%>
+                    <%--</c:forEach>--%>
+                <%--</select>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
         <!-- Button -->
         <div class="form-group">
