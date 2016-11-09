@@ -62,8 +62,12 @@
             <th>Plane</th>
             <th>From</th>
             <th>To</th>
-            <th>Crew</th>
-            <th>User</th>
+
+            <c:if test="${user.role<3}">
+                <th>Crew</th>
+                <th>User</th>
+            </c:if>
+
         </tr>
         </thead>
         <tbody>
@@ -76,8 +80,10 @@
                 <td>${flight.plane}</td>
                 <td>${flight.from}</td>
                 <td>${flight.to}</td>
-                <td>${flight.crew}</td>
-                <td>${flight.user}</td>
+                <c:if test="${user.role<3}">
+                    <td>${flight.crew}</td>
+                    <td>${flight.user}</td>
+                </c:if>
                 </tr>
             </c:forEach>
         </tbody>

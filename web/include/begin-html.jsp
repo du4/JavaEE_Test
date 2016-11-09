@@ -53,7 +53,6 @@
                     <menu:li command="ListUsers" glyphicon="glyphicon glyphicon-list-alt" text="  List Users"/>
                     <menu:li command="NewFlight" glyphicon="glyphicon glyphicon-plane" text="  New flight"/>
                     <menu:li command="StuffingCrew" glyphicon="glyphicon glyphicon-bullhorn" text="  Add Flight Crew"/>
-
                 </c:if>
                 <c:if test="${user.role==2}">
                     <menu:li command="StuffingCrew" glyphicon="glyphicon glyphicon-bullhorn" text="  Add Flight Crew"/>
