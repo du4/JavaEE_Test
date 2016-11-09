@@ -68,12 +68,11 @@ public class FrontController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         if (user != null) {
-            request.setAttribute("curUser", "Session info: user.login=" + user.getLogin() + ", created at-" + new Timestamp(session.getLastAccessedTime()));
+            request.setAttribute("curUser", "Session info: user.login=" + user.getLogin() +", role="+ user.getRole() + ", created at-" + new Timestamp(session.getLastAccessedTime()));
             request.setAttribute("user", user);
         } else {
 
 //            Cookie[] cookies = request.getCookies();
-//
 //            //     Create map of cookies
 //            if (cookies != null) {
 //                Map<String, String> cookieMap = new HashMap();
@@ -94,7 +93,6 @@ public class FrontController extends HttpServlet {
 //                        }
 //                    }
 //                }
-
             request.setAttribute("user", null);
         }
     }

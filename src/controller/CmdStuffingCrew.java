@@ -2,6 +2,7 @@ package controller;
 
 import beans.Crew;
 import dao.DAO;
+import sun.plugin.dom.core.Attr;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +33,7 @@ class CmdStuffingCrew extends Action {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                request.setAttribute("msgError", "Invalid field format. "+e.toString());
+                request.setAttribute(AttrMessages.msgError, "Invalid field format. "+e.toString());
                 return null;
             }
             DAO dao = DAO.getDAO();

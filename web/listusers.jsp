@@ -3,6 +3,7 @@
 <%@ include file="include/begin-html.jsp" %>
 
 
+<div class="container">
 
 <div class="row">
     <b>
@@ -63,6 +64,8 @@
     </div>
     <br>
 </c:forEach>
+
+</div>
 
 <%--<table width="100%" border="1" cellpadding="1" cellspacing="1">--%>
     <%--<tr>--%>

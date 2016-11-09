@@ -1,5 +1,4 @@
-<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
@@ -34,14 +33,14 @@
                         </select>
                     </div>
 
-                    <div class=col-md-1>Departure time</div>
+                    <%--<div class=col-md-1>Departure time</div>--%>
                     <div class=col-md-2>
-                        <input name="departureTime" size="16" type="text" value="" readonly class="form_datetime">
+                        <input name="departureTime" size="16" type="text" value="" placeholder="Departure time" class="form_datetime">
                     </div>
 
-                    <div class=col-md-1>Arrival time</div>
+                    <%--<div class=col-md-1>Arrival time</div>--%>
                     <div class=col-md-2>
-                        <input name="arrivalTime" size="16" type="text" value="" readonly class="form_datetime">
+                        <input name="arrivalTime" size="16" type="text" value="" placeholder="Arrival time" class="form_datetime">
                     </div>
                     <!-- Button -->
                     <div class="col-md-2">
@@ -85,18 +84,22 @@
     </table>
     </div>
 
-    <br><br>(${adCount})
+    <br>(${adCount})
     <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
     </fieldset>
     </form>
 
 
-<%--<script type="text/javascript" src="jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>--%>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 
 <script type="text/javascript">
-    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        pickTime: false
+    });
+
 </script>
 
 

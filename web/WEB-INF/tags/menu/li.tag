@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ attribute name="command"  required="true" rtexprvalue="true" type="java.lang.String"%>
+<%@ attribute name="glyphicon"  required="true" rtexprvalue="true" type="java.lang.String"%>
 <%@ attribute name="text"  required="true" rtexprvalue="true" type="java.lang.String"%>
 <%
 if (command.equalsIgnoreCase(request.getParameter("command"))){
@@ -12,5 +13,5 @@ if (command.equalsIgnoreCase(request.getParameter("command"))){
     };
 %>
 <li ${menuClassActive}>
-    <a href="airport?command=${command}">${text}</a>
+<a href="airport?command=${command}"><span class="${glyphicon}"></span>${text}</a>
 </li>

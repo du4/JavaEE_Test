@@ -2,6 +2,7 @@ package controller;
 
 import beans.FlightStr;
 import dao.DAO;
+import dao.FlightQueryStrBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,36 +14,36 @@ class CmdIndex extends Action {
     Action execute(HttpServletRequest request, HttpServletResponse response) {
         DAO dao = DAO.getDAO();
         int startNumber = 0;
-        String limit ="";
+        String flightQuery ="";
+
 
         if (request.getMethod().equalsIgnoreCase("post")) {
             try {
-                limit = "WHERE fromPort="+Integer.parseInt(Form.getString(request,"from",Patterns.INT));
-                limit += " AND toPort="+Integer.parseInt(Form.getString(request,"to",Patterns.INT))+" ";
-
+                FlightQueryStrBuilder queryStrBuilder = new FlightQueryStrBuilder();
+                queryStrBuilder.appendIntParam("fromPort", "=", request.getParameter("from"));
+                queryStrBuilder.appendIntParam("toPort", "=", request.getParameter("to"));
+                queryStrBuilder.appendStrParam("DATE(departure_time)", "=", request.getParameter("departureTime"));
+                queryStrBuilder.appendStrParam("DATE(arrival_time)", "=", request.getParameter("arrivalTime"));
+                flightQuery = queryStrBuilder.getQuery();
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
         }
 
-
         try {
             startNumber = Form.getInt(request, "startNumber");
         } catch (ParseException e) {
             startNumber = 0;
         }
-         limit += String.format(" LIMIT %s,%s", startNumber, 10);
-        List<FlightStr> flightStrs = dao.fligthStrDAO.getAll(limit);
-        request.setAttribute("adCount", dao.fligthStrDAO.getCount(""));
+        String limit = String.format(" LIMIT %s,%s", startNumber, 10);
+        List<FlightStr> flightStrs = dao.fligthStrDAO.getAll(flightQuery + limit);
+        request.setAttribute("adCount", dao.fligthStrDAO.getCount(flightQuery));
         for (FlightStr flight : flightStrs) {
             flight.setViewNumber(++startNumber);
         }
         request.setAttribute("flights", flightStrs);
         SessionAttrSesHelper.setAirportsToAttribute(request);
         return null;
-
-
-//        return Actions.INDEX.action;
     }
 }

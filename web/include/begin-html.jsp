@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
+<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,32 +45,38 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="/airport"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+                <%--<li><a href="/airport"><span class="glyphicon glyphicon-home"></span>  Home</a></li>--%>
+                <menu:li command="Index" glyphicon="glyphicon glyphicon-home" text="  Home"/>
+
 
                 <c:if test="${user.role==1}">
-                    <li><a href="airport?command=ListUsers"><span class="glyphicon glyphicon-list-alt"></span>  List Users</a></li>
-                    <li><a href="airport?command=NewFlight"><span class="glyphicon glyphicon-plane"></span>  New flight</a></li>
-                    <li><a href="airport?command=StuffingCrew"><span class="glyphicon glyphicon-bullhorn"></span>  Add Flight Crew</a></li>
+                    <menu:li command="ListUsers" glyphicon="glyphicon glyphicon-list-alt" text="  List Users"/>
+                    <menu:li command="NewFlight" glyphicon="glyphicon glyphicon-plane" text="  New flight"/>
+                    <menu:li command="StuffingCrew" glyphicon="glyphicon glyphicon-bullhorn" text="  Add Flight Crew"/>
+
                 </c:if>
                 <c:if test="${user.role==2}">
-                    <li><a href="airport?command=StuffingCrew"><span class="glyphicon glyphicon-send"></span>  Add Flight Crew</a></li>
+                    <menu:li command="StuffingCrew" glyphicon="glyphicon glyphicon-bullhorn" text="  Add Flight Crew"/>
                 </c:if>
 
-                <%--<li><a href="#"><span class="	glyphicon glyphicon-alert"></span> ${jsp_error}</a></li>--%>
-                <li><a href="#"> ${jsp_error}</a></li>
+                <%--<li><a href="#"> ${jsp_error}</a></li>--%>
 
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <c:if test="${user==null}">
-                    <li><a href="airport?command=Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="airport?command=SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>
+                    <menu:li command="Login" glyphicon="glyphicon glyphicon-log-in" text=" Login"/>
+                    <menu:li command="SignUp" glyphicon="glyphicon glyphicon-user" text=" SignUp"/>
+                    <%--<li><a href="airport?command=Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--%>
+                    <%--<li><a href="airport?command=SignUp"><span class="glyphicon glyphicon-user"></span> SignUp</a></li>--%>
                 </c:if>
                 <c:if test="${user!=null}">
                     <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="${curUser}"><span class="glyphicon glyphicon-check"></span>  user=${user.login}</a></li>
-                    <li><a href="airport?command=Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                    <li><a href="airport?command=Profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <menu:li command="Logout" glyphicon="glyphicon glyphicon-log-out" text=" Logout"/>
+                    <menu:li command="Profile" glyphicon="glyphicon glyphicon-user" text=" Profile"/>
+                    <%--<li><a href="airport?command=Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>--%>
+                    <%--<li><a href="airport?command=Profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>--%>
                 </c:if>
             </ul>
         </div>
