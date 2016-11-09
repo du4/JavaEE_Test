@@ -1,6 +1,7 @@
 package controller;
 
 import beans.User;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import dao.DAO;
 
 import javax.servlet.http.Cookie;
@@ -27,12 +28,14 @@ class CmdLogin extends Action {
                     addUserToSessionCookie(userList.get(0), request, response);
 
                     return Actions.INDEX.action;
+                } else {
+                    throw new IllegalArgumentException("Wrong login or password");
                 }
             } catch (Exception e) {
                 request.setAttribute(AttrMessages.msgError, "Invalid field format. " + e.toString());
             }
         }
-        return  Actions.LOGIN.action;
+        return  null;
     }
 
     private void addUserToSessionCookie(User user, HttpServletRequest request, HttpServletResponse response){

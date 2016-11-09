@@ -26,16 +26,6 @@
                     </div>
                 </div>
 
-
-                <%--<div class="form-group">--%>
-                    <%--<label class="col-md-4 control-label" >Departure & Arrival Time</label>--%>
-                    <%--<div class=col-md-4>--%>
-                        <%--<input name="arrivalTime" size="16" type="text" value="" readonly class="form_datetime">--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-
-
-
                 <div class="form-group">
                     <label class="col-md-4 control-label" >Departure & Arrival Time</label>
                     <div class="container">

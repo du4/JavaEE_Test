@@ -26,11 +26,11 @@ class CmdNewFlight extends Action {
                 flight.setFlightCode(Form.getString(request, "code", Patterns.FLIGTH_CODE));
                 flight.setCompany(Form.getString(request, "company", Patterns.PASSWORD));
 
-                String timestampStr = request.getParameter("departureTime")+":00";
+                String timestampStr = request.getParameter("arrivalTime")+":00";
                 Timestamp timestamp1 = Timestamp.valueOf(timestampStr);
                 flight.setArrival_time(timestamp1 );
 
-                timestampStr = request.getParameter("arrivalTime")+":00";
+                timestampStr = request.getParameter("departureTime")+":00";
                 timestamp1 = Timestamp.valueOf(timestampStr);
                 flight.setDeparture_time(timestamp1 );
 
@@ -41,7 +41,7 @@ class CmdNewFlight extends Action {
                 if (flight.getFrom() == flight.getTo()){
                     throw new Exception("Destination can't be equals to Arrival");
                 }
-                if (flight.getDeparture_time().getTime()  < flight.getArrival_time().getTime()){
+                if (flight.getDeparture_time().getTime()  >= flight.getArrival_time().getTime()){
                     throw new Exception("Arrival time must be more then Destination time");
                 }
             }catch (Exception e) {
